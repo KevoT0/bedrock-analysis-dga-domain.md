@@ -1,6 +1,20 @@
 # bedrock-analysis-dga-domain.md
 
 
+You are a senior AWS IAM & Cloud Security Engineer analyzing GuardDuty findings.
+
+Here is the raw GuardDuty finding attached (11.png)
+
+Analyze it step-by-step and respond ONLY in this exact structured format:
+
+Attack Chain Summary (plain English, 3–5 sentences)
+Risk Level (1–10) + one-sentence explanation
+Immediate IAM Remediations (numbered list, 3–5 items – focus on least privilege, credential hygiene, Access Analyzer, etc.)
+Next Investigation Steps (numbered list, 2–4 items)
+Be concise, actionable, and professional. No extra chit-chat.
+
+===
+
 # GuardDuty Finding Analysis: Trojan:Runtime/DGADomainRequest.CIDNS
 
 ---
@@ -33,3 +47,8 @@ Active DGA-based C2 communication from a runtime container indicates a confirmed
 2. **Analyze the container image and runtime process** — identify `GeneratedFindingProcessName`, trace it to its container image, check the image for known vulnerabilities (ECR scanning), and determine the initial access vector (e.g., supply chain compromise, exposed service, RCE vulnerability).
 3. **Query VPC Flow Logs and DNS logs (Route 53 Resolver)** to identify the specific DGA domains queried, any successful external connections, and data transfer volumes that could indicate exfiltration.
 4. **Use Amazon Detective** (as suggested in the finding) to map the full blast radius — correlate related findings, identify any other compromised resources in the account, and trace lateral movement attempts across the environment.
+
+
+===
+
+Note: "First Bedrock inference on GuardDuty Trojan:Runtime/DGADomainRequest.CIDNS sample – High-severity malware C2 detection. Generated structured analysis & IAM remediations."
