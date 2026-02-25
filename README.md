@@ -61,7 +61,7 @@ Note: "First Bedrock inference on GuardDuty Trojan:Runtime/DGADomainRequest.CIDN
 Name: bedrock-analysis-iam-compromised-credentials.md
 
 
-Prompt: 
+## Prompt: 
 
 You are a senior AWS IAM & Cloud Security Engineer analyzing GuardDuty findings.
 
@@ -117,3 +117,14 @@ This is a confirmed active compromise with privilege escalation, persistence mec
 3. **Blast radius assessment across the Organization** — use Amazon Detective to map all related entities and behaviors; check if the attacker-created roles have trust policies allowing assumption from external accounts; query CloudTrail in all linked accounts for any cross-account activity from compromised credentials or newly created roles.
 
 4. **Validate logging integrity** — confirm whether the `cloudtrail:DeleteTrail` call actually succeeded (check the CloudTrail event for `responseElements`); if it did, there may be a gap in visibility — cross-reference VPC Flow Logs, S3 access logs, and GuardDuty findings to reconstruct any activity during the logging blind spot.
+
+
+
+NOTE: "Bedrock (Claude Opus 4.6) automated analysis of sample GuardDuty AttackSequence:IAM/CompromisedCredentials finding. Demonstrates AI-assisted triage, risk scoring, IAM remediations, and IR steps for credential compromise scenarios."
+
+
+### AI-Powered GuardDuty Triage Prototype
+Early prototype using Amazon Bedrock to analyze GuardDuty findings:
+- DGA malware C2 detection → Risk 9/10 + container isolation & IMDSv2 fixes
+- IAM credential compromise Attack Sequence → Risk 10/10 + session revocation, role deletion, SCPs, Access Analyzer
+Goal: Automate summarization + remediation suggestions for Critical findings.
